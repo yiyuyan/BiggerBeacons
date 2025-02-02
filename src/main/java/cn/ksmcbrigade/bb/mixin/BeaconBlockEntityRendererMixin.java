@@ -2,7 +2,6 @@ package cn.ksmcbrigade.bb.mixin;
 
 import net.minecraft.block.entity.BeaconBlockEntity;
 import net.minecraft.client.MinecraftClient;
-import net.minecraft.client.render.LightmapTextureManager;
 import net.minecraft.client.render.VertexConsumerProvider;
 import net.minecraft.client.render.block.entity.BeaconBlockEntityRenderer;
 import net.minecraft.client.render.block.entity.BlockEntityRendererFactory;
@@ -34,11 +33,6 @@ public class BeaconBlockEntityRendererMixin {
     @ModifyConstant(method = "render(Lnet/minecraft/block/entity/BeaconBlockEntity;FLnet/minecraft/client/util/math/MatrixStack;Lnet/minecraft/client/render/VertexConsumerProvider;II)V",constant = @Constant(intValue = 1024))
     public int render(int value){
         return MAX_BEAM_HEIGHT;
-    }
-
-    @ModifyConstant(method = "renderBeamVertex",constant = @Constant(intValue = 15728880))
-    private static int renderBeamVertex(int value){
-        return LightmapTextureManager.MAX_LIGHT_COORDINATE;
     }
 
     @ModifyConstant(method = "renderBeam(Lnet/minecraft/client/util/math/MatrixStack;Lnet/minecraft/client/render/VertexConsumerProvider;FJIII)V",constant = @Constant(floatValue = 0.2F))
